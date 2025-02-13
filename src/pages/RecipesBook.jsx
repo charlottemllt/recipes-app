@@ -1,0 +1,23 @@
+import RecipeCard from './../components/RecipeCard'
+
+function RecipesBook(props){
+    const recipes = props.recipes
+    console.log(recipes)
+    const recipes_cards = Object.keys(recipes).map( (index_recipe) => {
+        return (
+            <RecipeCard key={`recipe-${recipes[index_recipe]["ID"]}`} recipeName={recipes[index_recipe]["Name"]} />
+        )   
+    })
+
+    return (
+        <div className="RecipesBook">
+            <h1>Mon Livre de Recettes</h1>
+            <div className="recipesList">
+                {recipes_cards}
+                <RecipeCard key="add-a-new-recipe" recipeName="add-a-new-recipe" />
+            </div>
+        </div>
+    )
+}
+
+export default RecipesBook;

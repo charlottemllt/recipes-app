@@ -1,12 +1,111 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+#root, .App {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  /* padding: 2rem; */
   text-align: center;
 }
 
-.card {
-  padding: 2em;
+
+.Header{
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .appTitle{
+    font-family: 'Fredoka One', cursive;
+    font-size: 40px;
+
+  }
+  nav{
+    display:flex;
+  }
+  background-color: #084B83;
+  color: #BBE6E4;
+
+  .NavItem{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    color: #BBE6E4;
+    .selected{
+      font-weight: 600;
+      text-decoration: underline;
+    }
+  }
+}
+.Homepage{
+  nav{
+    display: flex;
+  }
+}
+
+@keyframes openCard{
+  0% {
+    transform: rotate3d(0) scale(1);
+  }
+  50% {
+    /* transform: rotate3d(0, 1, 0, 180deg) scale(1); */
+    /* opacity: 0.25; */
+  }
+  100% {
+    transform: rotate3d(0, 1, 0, 60deg) scale(1);
+    /* opacity: 0; */
+  }
+}
+
+.recipesList{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: start;
+  padding: 40px;
+  gap: 50px;
+  .RecipeCard{
+    display: flex;
+    padding: 12px;
+    width: 25%;
+    height: 100px;
+    box-shadow: #084B83 5px 5px 10px;
+    border-radius: 16px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    .recipeItem{
+      color: #084B83;
+      text-wrap: balance;
+      &.addNewRecipe{
+        width: 80px;
+        height: 80px;
+      }
+    }
+    .seeRecipeBtn, .addRecipeBtn{
+      width: 32px;
+      height: 32px;
+      border-radius: 16px;
+      position: absolute;
+      top: calc(100% - 40px);
+      fill: #084B83;
+      &:hover{
+        transform: scale(1.15);
+        transition: all ease 0.2s;
+      }
+    }
+    .seeRecipeBtn{
+      left: calc(100% - 40px - 32px - 8px);
+    }
+    .addRecipeBtn{
+      left: calc(100% - 40px);
+    }
+
+    &:hover{
+      animation: openCard 1s ease infinite alternate;
+    }
+  }
 }
 /* 
 .read-the-docs {

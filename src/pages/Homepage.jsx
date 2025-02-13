@@ -1,13 +1,13 @@
 // import { Routes, Route, Link } from "react-router-dom";
-import Recipes from "./Recipes";
-import Basket from "./Basket";
+import Recipes from "../components/Recipes";
+import Basket from "../components/Basket";
 
 function Homepage(){
     return (
-        <div>
+        <div className="Homepage">
             <nav>
                 <div>Mes Recettes</div>
-                <div>Ma liste de courses</div>
+                <div>Liste de Courses</div>
             </nav>
             <Recipes />
             <Basket />
