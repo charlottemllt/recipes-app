@@ -13,7 +13,7 @@ function addNewRecipe(){
 }
 
 function RecipeCard(props){
-    const name = props.recipeName
+    const name = props.recipe["Name"]
     if (name == "add-a-new-recipe"){
         return (
             <Link to="/new_recipe" className="RecipeCard">
@@ -24,7 +24,7 @@ function RecipeCard(props){
     else{
         return (
             <Link to="/details" className="RecipeCard">
-                <div className="recipeItem" key={props.key}>{name}</div>
+                <div className="recipeItem" key={`recipe-item-${props.recipe["ID"]}`}>{name}</div>
                 <FaEye className="seeRecipeBtn" onClick={seeRecipeDetails} />
                 <IoIosAddCircle className="addRecipeBtn" onClick={addRecipe} />
             </Link>

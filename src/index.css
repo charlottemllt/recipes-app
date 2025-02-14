@@ -1,11 +1,17 @@
 :root {
+  --color1: #FFEEDD; /* background */
+  --color2: #FFD8BE; 
+  --color3: #9381FF; /* text */
+  --color4: #B8B8FF;
+  --color5: #F8F7FF;
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: #084B83;
-  background-color: #BBE6E4;
+  color: var(--color3);
+  background-color: var(--color1);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

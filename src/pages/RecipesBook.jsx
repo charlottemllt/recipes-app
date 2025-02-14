@@ -5,7 +5,7 @@ function RecipesBook(props){
     console.log(recipes)
     const recipes_cards = Object.keys(recipes).map( (index_recipe) => {
         return (
-            <RecipeCard key={`recipe-${recipes[index_recipe]["ID"]}`} recipeName={recipes[index_recipe]["Name"]} />
+            <RecipeCard key={`recipe-${recipes[index_recipe]["ID"]}`} recipe={recipes[index_recipe]} />
         )   
     })
 
@@ -14,7 +14,7 @@ function RecipesBook(props){
             <h1>Mon Livre de Recettes</h1>
             <div className="recipesList">
                 {recipes_cards}
-                <RecipeCard key="add-a-new-recipe" recipeName="add-a-new-recipe" />
+                <RecipeCard key="add-a-new-recipe" recipe={{"Name": "add-a-new-recipe"}} />
             </div>
         </div>
     )
