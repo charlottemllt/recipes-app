@@ -230,3 +230,24 @@
     }
   }
 }
+
+.NewRecipe{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  .tagsSelection{
+    display: flex;
+    .tagItem{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      checkbox{
+        width: 16px;
+        height: 16px;
+        border: 1px solid black;
+        border-radius: 4px;
+      }
+    }
+  }
+}

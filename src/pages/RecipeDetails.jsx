@@ -1,12 +1,29 @@
 import { Link, useParams } from "react-router-dom";
 
 import { PiOvenFill } from "react-icons/pi";
+import { TbSeeding, TbSalad } from "react-icons/tb";
+import { BiTimer } from "react-icons/bi";
 import { IoMdArrowRoundBack } from "react-icons/io";
 
 import RECIPES from './../config/recipes.json'
 
 const TAG_ICONS = {
-    "Four": <PiOvenFill />
+    "Au four": {
+        "ID": "icon-01",
+        "icon": <PiOvenFill />
+    },
+    "Rapide": {
+        "ID": "icon-01",
+        "icon": <BiTimer />
+    },
+    "Végétarien": {
+        "ID": "icon-01",
+        "icon": <TbSeeding />
+    },
+    "Salade": {
+        "ID": "icon-01",
+        "icon": <TbSalad />
+    }
 }
 
 function RecipeDetails(){
@@ -21,7 +38,7 @@ function RecipeDetails(){
             <h2>{recipe["Name"]}</h2>
             <div className="recipeTags">
                 {recipe["Tags"].map( (tag) => {
-                    return TAG_ICONS[tag]
+                    return TAG_ICONS[tag]["icon"]
                 })}
             </div>
             <img className="recipeImage" src="https://picsum.photos/710/375" height={375} width={710}></img>
