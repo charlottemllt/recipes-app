@@ -23,7 +23,7 @@ function RecipeCard(props){
     }
     else{
         return (
-            <Link to="/details" className="RecipeCard">
+            <Link to={`/details/${props.recipe["ID"]}`} className="RecipeCard">
                 <div className="recipeItem" key={`recipe-item-${props.recipe["ID"]}`}>{name}</div>
                 <FaEye className="seeRecipeBtn" onClick={seeRecipeDetails} />
                 <IoIosAddCircle className="addRecipeBtn" onClick={addRecipe} />

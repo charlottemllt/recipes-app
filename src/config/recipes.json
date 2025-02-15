@@ -1,0 +1,45 @@
+{
+    "001":{
+        "ID": "001",
+        "Name": "Salade César",
+        "Nombre de personnes": 2,
+        "Tags": ["Salade"],
+        "Ingrédients": {
+            "batavia": 40,
+            "poulet": 200
+        },
+        "Temps": 20
+    },
+  
+    "002":{
+        "ID": "002",
+        "Name": "Bowl Poulet",
+        "Nombre de personnes": 2,
+        "Tags": [],
+        "Ingrédients": {
+            "avocat": 1,
+            "mais": 100,
+            "filet de poulet": 2
+        },
+        "Temps": 45
+    },
+  
+    "003":{
+        "ID": "003",
+        "Name": "Cuisse de poulet et légumes rôtis au thym",
+        "Nombre de personnes": 2,
+        "Tags": [],
+        "Ingrédients": {
+            "poivron rouge": 1,
+            "courgette": 1,
+            "tomates cerises": 250,
+            "cuisse de poulet": 2,
+            "thym séché": 2,
+            "farfalle": 140,
+            "copeaux de grana padano": 40,
+            "huile d'olive": 1.5,
+            "beurre": 1
+        },
+        "Temps": 90
+    }
+}

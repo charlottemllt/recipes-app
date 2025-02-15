@@ -1,32 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { PiOvenFill } from "react-icons/pi";
 import { IoMdArrowRoundBack } from "react-icons/io";
+
+import RECIPES from './../config/recipes.json'
 
 const TAG_ICONS = {
     "Four": <PiOvenFill />
 }
 
-const recipe = {
-    "ID": "003",
-    "Name": "Cuisse de poulet et légumes rôtis au thym",
-    "Nombre de personnes": 2,
-    "Tags": ["Four"],
-    "Ingrédients": {
-        "poivron rouge": 1,
-        "courgette": 1,
-        "tomates cerises": 250,
-        "cuisse de poulet": 2,
-        "thym séché": 2,
-        "farfalle": 140,
-        "copeaux de grana padano": 40,
-        "huile d'olive": 1.5,
-        "beurre": 1
-    },
-    "Temps": 90
-}
-
 function RecipeDetails(){
+    const recipeID = useParams()
+    const recipe = RECIPES[recipeID["indexRecipe"]]
     return (
         <div className="RecipeDetails">
             <Link className="BackBtn" to="/recipes_book">
@@ -39,15 +24,15 @@ function RecipeDetails(){
                     return TAG_ICONS[tag]
                 })}
             </div>
-            <img src="https://picsum.photos/200"></img>
+            <img className="recipeImage" src="https://picsum.photos/710/375" height={375} width={710}></img>
             <div className="recipeInfos">
                 <div className="recipePreparation">
-                    <div>Preparation :</div>
-                    <div>{`${recipe["Temps"]} minutes`}</div>
+                    <div className="detailsSubtitle">Preparation :</div>
+                    <div className="preparationTime">{`${recipe["Temps"]} minutes`}</div>
                 </div>
                 <div className="recipeIngredients">
-                    <div>Ingrédients :</div>
-                    <div>
+                    <div className="detailsSubtitle">Ingrédients :</div>
+                    <div className="ingredientsList">
                         {Object.keys(recipe["Ingrédients"]).map( (ing, index_ing) => {
                             return (
                                 <div className="ingredientItem" key={`ing_${index_ing}`}>
@@ -58,20 +43,32 @@ function RecipeDetails(){
                         })}
                     </div>
                 </div>
-                <div className="recipeDetails">
-                    <h3>Recette</h3>
-                    <div>1. Dans un grand bol, mélangez la farine d'épeautre avec le sel et les herbes aromatiques ou épices si vous en utilisez</div>
-                    <div>2. Dans un autre bol, battez l'œuf puis ajoutez le lait d'amande et l'huile d'olive. Mélangez bien.</div>
-                    <div>3. Versez le mélange liquide dans le bol de farine d'épeautre et mélangez jusqu'à obtenir une pâte homogène. Si la pâte est trop épaisse, ajoutez un peu plus de lait d'amande.</div>
-                    <div>4. Faites chauffer une poêle légèrement huilée à feu moyen.</div>
-                </div>
-                <div>
-                    Ajouter à la liste
-                </div>
-                <Link to="/recipes_book" className="nav-item">
-                    Voir toutes les recettes
-                </Link>
             </div>
+            <div className="recipeDetails">
+                <h3>Recette</h3>
+                <div className="recipeStep">
+                    <div className="stepNumber">1.</div>
+                    <div className="stepDescription">Dans un grand bol, mélangez la farine d'épeautre avec le sel et les herbes aromatiques ou épices si vous en utilisez</div>
+                </div>
+                <div className="recipeStep">
+                    <div className="stepNumber">2.</div>
+                    <div className="stepDescription">Dans un autre bol, battez l'œuf puis ajoutez le lait d'amande et l'huile d'olive. Mélangez bien.</div>
+                </div>
+                <div className="recipeStep">
+                    <div className="stepNumber">3.</div>
+                    <div className="stepDescription">Versez le mélange liquide dans le bol de farine d'épeautre et mélangez jusqu'à obtenir une pâte homogène. Si la pâte est trop épaisse, ajoutez un peu plus de lait d'amande.</div>
+                </div>
+                <div className="recipeStep">
+                    <div className="stepNumber">4.</div>
+                    <div className="stepDescription">Faites chauffer une poêle légèrement huilée à feu moyen.</div>
+                </div>
+            </div>
+            <div className="addRecipeBtn Btn">
+                Ajouter à la liste
+            </div>
+            <Link to="/recipes_book" className="allRecipesBtn Btn">
+                Voir toutes les recettes
+            </Link>
         </div>
     )
 }

@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
+*{
+  scrollbar-width: none;
+}
+
 #root, .App {
   height: 100vh;
   width: 100vw;
@@ -130,11 +134,22 @@
 }
 
 .RecipeDetails{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 40px;
+  height: calc(100% - 80px);
+  overflow: scroll;
   .BackBtn {
     display: flex;
+    align-self: flex-start;
     align-items: center;
     padding: 0 40px;
     gap: 8px;
+    height: 40px;
+    position: sticky;
+    top: 20px;
     svg{
       stroke-width: 1;
     }
@@ -145,6 +160,73 @@
         /* stroke-width: 2; */
       }
     }
-
+  }
+  .recipeImage{
+    border-radius: 12px;
+  }
+  .recipeInfos{
+    width: 700px;
+    .recipePreparation, .recipeIngredients{
+      display: flex;
+      padding: 20px 8px;
+      .detailsSubtitle{
+        font-weight: 800;
+        width: 140px;
+      }
+      .preparationTime{
+        flex: 1;
+        text-align: start;
+      }
+      .ingredientsList{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        flex: 1;
+        text-align: start;
+        .ingredientItem{
+          width: 30%;
+        }
+      }
+    }
+  }
+  .recipeDetails{
+    background-color: var(--color5);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* align-items: flex-start; */
+    gap: 20px;
+    padding: 0 40px 60px 40px;
+    margin: 40px 0;
+    border-radius: 16px;
+    .recipeStep{
+      align-self: flex-start;
+      display: flex;
+      align-items: flex-start;
+      .stepNumber{
+        width: 40px;
+      }
+      .stepDescription{
+        flex: 1;
+        text-align: start;
+      }
+    }
+  }
+  .Btn{
+    width: 240px;
+    height: 28px;
+    border-radius: 12px;
+    padding: 4px 8px;
+    margin: 8px 0;
+    background-color: var(--color3);
+    color: var(--color5);
+    border: 2px solid var(--color3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover{
+      color: var(--color3);
+      background-color: var(--color5);
+    }
   }
 }
