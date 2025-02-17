@@ -33,7 +33,7 @@ function RecipeDetails(){
         <div className="RecipeDetails">
             <Link className="BackBtn" to="/recipes_book">
                 <IoMdArrowRoundBack />
-                <div>Retour</div>
+                <div className="backText">Retour</div>
             </Link>
             <h2>{recipe["Name"]}</h2>
             <div className="recipeTags">
@@ -41,7 +41,7 @@ function RecipeDetails(){
                     return TAG_ICONS[tag]["icon"]
                 })}
             </div>
-            <img className="recipeImage" src="https://picsum.photos/710/375" height={375} width={710}></img>
+            <img className="recipeImage" src="https://picsum.photos/640/360"></img>
             <div className="recipeInfos">
                 <div className="recipePreparation">
                     <div className="detailsSubtitle">Preparation :</div>

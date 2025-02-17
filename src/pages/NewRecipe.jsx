@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { PiOvenFill } from "react-icons/pi";
 import { TbSeeding, TbSalad } from "react-icons/tb";
 import { BiTimer } from "react-icons/bi";
+import { FaTrashCan } from "react-icons/fa6";
 
 import { IoMdArrowRoundBack, IoMdAdd } from "react-icons/io";
 
@@ -56,24 +57,28 @@ function NewRecipe(){
         setSteps(stepsUpdated)
     }
 
+    function deleteStep(){
+        console.log("delete step")
+    }
+
     return (
         <div className="NewRecipe">
-            <input placeholder="Ajouter le nom de la recette"></input>
+            <input className="recipeTitle" placeholder="Ajouter le nom de la recette"></input>
             <div className="tagsSelection">
                 {Object.keys(TAG_ICONS).map( (tag) => {
                     return (
                         <div className="tagItem" key={TAG_ICONS[tag]["ID"]}>
                             {TAG_ICONS[tag]["icon"]}
                             <span className="tagLabel">{tag}</span>
-                            <checkbox></checkbox>
+                            <input type="checkbox" className="checkbox"></input>
                         </div>
                     )
                 })}
             </div>
             <div className="imageImport">
-                <div className>
-                    <IoMdAdd />
-                </div>
+                {/* <div className="imageSubdivision"> */}
+                    <IoMdAdd className="addImageIcon"/>
+                {/* </div> */}
             </div>
             <div className="recipeInfos">
                 <div className="recipePreparation">
@@ -100,7 +105,7 @@ function NewRecipe(){
                                             <option>Ing 1</option>
                                             <option>Ing 2</option>
                                         </select>
-                                        <span onClick={deleteIngredient} id={ingredient["ID"]}>Trash</span>
+                                        <span onClick={deleteIngredient} id={ingredient["ID"]}><FaTrashCan /></span>
                                     </div>
                                 )
                             })
@@ -115,8 +120,11 @@ function NewRecipe(){
                 {
                     steps.map( (step, idx) => {
                         return (
-                            <input key={idx}></input>
-                            // TODO: change the key
+                            <div className="stepItem" key={idx}>
+                                <textarea></textarea>
+                                {/* // TODO: change the key */}
+                                <span onClick={deleteStep} id={idx}><FaTrashCan /></span>
+                            </div>
                         )
                     })
                 }

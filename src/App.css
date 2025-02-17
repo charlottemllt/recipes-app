@@ -8,20 +8,37 @@
   height: 100vh;
   width: 100vw;
   margin: 0;
-  /* padding: 2rem; */
   text-align: center;
 
-  --color1: #FFEEDD; /* background */
-  --color2: #FFD8BE; 
-  --color3: #9381FF; /* text */
-  --color4: #B8B8FF;
-  --color5: #F8F7FF;
+  --color1: #EDE0D4;
+  --color2: #E6CCB2; 
+  --color3: #DDB892;
+  --color4: #B08968;
+  --color5: #7F5539;
+  --color6: #9C6644;
 
   background-color: var(--color1);
 }
 
+.Btn{
+  width: 240px;
+  height: 28px;
+  border-radius: 12px;
+  padding: 4px 8px;
+  margin: 8px 0;
+  background-color: var(--color6);
+  color: var(--color3);
+  border: 2px solid var(--color6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover{
+    color: var(--color6);
+    background-color: var(--color3);
+  }
+}
 
-.Header{
+.Header{  
   height: 80px;
   display: flex;
   justify-content: space-between;
@@ -30,12 +47,10 @@
   .appTitle{
     font-family: 'Fredoka One', cursive;
     font-size: 40px;
-
   }
   nav{
     display:flex;
   }
-
   .NavItem{
     display: flex;
     flex-direction: column;
@@ -43,7 +58,10 @@
     align-items: center;
     padding: 4px;
     width: 100px;
-    color: var(--color3);
+    color: var(--color6);
+    &:hover{
+      color: var(--color5);
+    }
     .icon{
       width: 32px;
       height: 32px;
@@ -56,11 +74,17 @@
       align-items: center;
     }
     .selected{
-      font-weight: 600;
+      font-weight: 700;
       text-decoration: underline;
     }
   }
 }
+.Homepage, .RecipesBook, .NewRecipe, .RecipeDetails{
+  height: calc(100% - 80px);
+  width: 100%;
+  /* overflow: auto; */
+}
+
 .Homepage{
   nav{
     display: flex;
@@ -81,54 +105,61 @@
   }
 }
 
-.recipesList{
+.RecipesBook{
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: start;
-  padding: 40px;
-  gap: 50px;
-  .RecipeCard{
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  .recipesList{
     display: flex;
-    padding: 12px;
-    width: 25%;
-    height: 100px;
-    border-radius: 16px;
-    background-color: var(--color2);
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    .recipeItem{
-      color: var(--color3);
-      text-wrap: balance;
-      &.addNewRecipe{
-        width: 80px;
-        height: 80px;
-      }
-    }
-    .seeRecipeBtn, .addRecipeBtn{
-      width: 32px;
-      height: 32px;
+    flex: 1;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: start;
+    padding: 40px;
+    gap: 50px;
+    .RecipeCard{
+      display: flex;
+      padding: 12px;
+      width: 25%;
+      height: 100px;
       border-radius: 16px;
-      position: absolute;
-      top: calc(100% - 40px);
-      fill: var(--color3);
+      background-color: var(--color2);
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      .recipeItem{
+        color: var(--color4);
+        text-wrap: balance;
+        &.addNewRecipe{
+          width: 80px;
+          height: 80px;
+        }
+      }
+      .seeRecipeBtn, .addRecipeBtn{
+        width: 32px;
+        height: 32px;
+        border-radius: 16px;
+        position: absolute;
+        top: calc(100% - 40px);
+        fill: var(--color6);
+        &:hover{
+          transform: scale(1.15);
+          transition: all ease 0.2s;
+        }
+      }
+      .seeRecipeBtn{
+        left: calc(100% - 40px - 32px - 8px);
+      }
+      .addRecipeBtn{
+        left: calc(100% - 40px);
+      }
+  
       &:hover{
-        transform: scale(1.15);
+        /* animation: openCard 1s ease infinite alternate; */
+        box-shadow: var(--color5) 5px 5px 10px;
         transition: all ease 0.2s;
       }
-    }
-    .seeRecipeBtn{
-      left: calc(100% - 40px - 32px - 8px);
-    }
-    .addRecipeBtn{
-      left: calc(100% - 40px);
-    }
-
-    &:hover{
-      /* animation: openCard 1s ease infinite alternate; */
-      box-shadow: var(--color2) 5px 5px 10px;
-      transition: all ease 0.2s;
     }
   }
 }
@@ -139,8 +170,6 @@
   justify-content: flex-start;
   align-items: center;
   padding: 40px;
-  height: calc(100% - 80px);
-  overflow: scroll;
   .BackBtn {
     display: flex;
     align-self: flex-start;
@@ -154,15 +183,15 @@
       stroke-width: 1;
     }
     &:hover{
-      /* font-weight: 800; */
-      font-size: 18px;
-      svg {
-        /* stroke-width: 2; */
-      }
+      transform: scale(1.15);
+      transition: all ease 0.2s;
     }
   }
   .recipeImage{
-    border-radius: 12px;
+    width: 640px;
+    height: 360px;
+    transform: scale(0.8);
+    border-radius: 20px;
   }
   .recipeInfos{
     width: 700px;
@@ -190,7 +219,7 @@
     }
   }
   .recipeDetails{
-    background-color: var(--color5);
+    background-color: var(--color4);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -212,23 +241,6 @@
       }
     }
   }
-  .Btn{
-    width: 240px;
-    height: 28px;
-    border-radius: 12px;
-    padding: 4px 8px;
-    margin: 8px 0;
-    background-color: var(--color3);
-    color: var(--color5);
-    border: 2px solid var(--color3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    &:hover{
-      color: var(--color3);
-      background-color: var(--color5);
-    }
-  }
 }
 
 .NewRecipe{
@@ -236,18 +248,53 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  input, textarea, select{
+    background: var(--color2);
+    color: var(--color4);
+    border: 1px solid var(--color4);
+  }
+  .recipeTitle{
+    width: 30%;
+    height: 24px;
+    border-radius: 8px;
+  }
   .tagsSelection{
     display: flex;
     .tagItem{
       display: flex;
       flex-direction: column;
       align-items: center;
-      checkbox{
+      .checkbox{
         width: 16px;
         height: 16px;
-        border: 1px solid black;
+        border: 1px solid var(--color6);
         border-radius: 4px;
+        background-color: var(--color2);
       }
+    }
+  }
+  .imageImport{
+    width: 640px;
+    height: 360px;
+    transform: scale(0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background: var(--color2);
+    .imageSubdivision{
+      width: 480px;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+      background-color: white;
+    }
+    svg{
+      color: var(--color4);
+      width: 160px;
+      height: 160px;
     }
   }
 }
