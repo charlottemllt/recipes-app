@@ -1,5 +1,5 @@
 {
-    "001":{
+    "001": {
         "ID": "001",
         "Name": "Salade César",
         "Nombre de personnes": 2,
@@ -11,7 +11,7 @@
         "Temps": 20
     },
   
-    "002":{
+    "002": {
         "ID": "002",
         "Name": "Bowl Poulet",
         "Nombre de personnes": 2,
@@ -24,7 +24,7 @@
         "Temps": 45
     },
   
-    "003":{
+    "003": {
         "ID": "003",
         "Name": "Cuisse de poulet et légumes rôtis au thym",
         "Nombre de personnes": 2,

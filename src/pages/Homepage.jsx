@@ -1,24 +1,30 @@
-// import { Routes, Route, Link } from "react-router-dom";
+import { useState } from 'react';
+
+import { RecipesContextProvider } from "../context/RecipesContext";
 import Recipes from "../components/Recipes";
 import Basket from "../components/Basket";
 
 function Homepage(){
+    const [pageSelected, setPage] = useState("recipes")
+    // const {recipes, setRecipes} = useContext(RecipesContext)
+
+    function setPageAsBasket(){
+        setPage("basket")
+    }
+    function setPageAsRecipes(){
+        setPage("recipes")
+    }
+
     return (
         <div className="Homepage">
             <nav>
-                <div>Mes Recettes</div>
-                <div>Liste de Courses</div>
+                <div onClick={() => setPageAsRecipes()}>Mes Recettes</div>
+                <div onClick={() => setPageAsBasket()}>Liste de Courses</div>
             </nav>
-            <Recipes />
-            <Basket />
-            {/* <nav>
-                <Link to="/recipes" className="nav-item">Mes Recettes</Link>
-                <Link to="/basket" className="nav-item">Ma liste de courses</Link>
-            </nav>
-            <Routes>
-                <Route path="/recipes" element={<Recipes />}></Route>
-                <Route path="/basket" element={<Basket />}></Route>
-            </Routes> */}
+            <RecipesContextProvider>
+                {pageSelected === "recipes" && <Recipes />}
+                {pageSelected === "basket" && <Basket />}
+            </RecipesContextProvider>
         </div>
     )
 }

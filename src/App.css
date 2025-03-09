@@ -89,6 +89,10 @@
   nav{
     display: flex;
   }
+  .selectList{
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 @keyframes openCard{

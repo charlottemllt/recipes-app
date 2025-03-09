@@ -1,10 +1,11 @@
 import RecipeCard from './../components/RecipeCard'
 
-function RecipesBook(props){
-    const recipes = props.recipes
-    const recipes_cards = Object.keys(recipes).map( (index_recipe) => {
+import RECIPES from '../config/recipes.json'
+
+function RecipesBook(){
+    const recipes_cards = Object.keys(RECIPES).map( (index_recipe) => {
         return (
-            <RecipeCard key={`recipe-${recipes[index_recipe]["ID"]}`} recipe={recipes[index_recipe]} />
+            <RecipeCard key={`recipe-${RECIPES[index_recipe]["ID"]}`} recipe={RECIPES[index_recipe]} />
         )   
     })
 

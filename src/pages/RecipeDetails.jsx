@@ -80,9 +80,9 @@ function RecipeDetails(){
                     <div className="stepDescription">Faites chauffer une poêle légèrement huilée à feu moyen.</div>
                 </div>
             </div>
-            <div className="addRecipeBtn Btn">
+            {/* <div className="addRecipeBtn Btn">
                 Ajouter à la liste
-            </div>
+            </div> */}
             <Link to="/recipes_book" className="allRecipesBtn Btn">
                 Voir toutes les recettes
             </Link>

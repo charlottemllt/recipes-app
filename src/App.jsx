@@ -7,9 +7,6 @@ import NewRecipe from "./pages/NewRecipe"
 import RecipeDetails from "./pages/RecipeDetails"
 import Header from "./components/Header";
 
-import RECIPES from './config/recipes.json'
-import INGREDIENTS from './config/recipes.json'
-
 function App() {
 
   return (
@@ -17,7 +14,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Homepage />}></Route>
-        <Route path="/recipes_book" element={<RecipesBook recipes={RECIPES} ingredients={INGREDIENTS}/>}></Route>
+        <Route path="/recipes_book" element={<RecipesBook />}></Route>
         <Route path="/new_recipe" element={<NewRecipe />}></Route>
         <Route path="/details/:indexRecipe" element={<RecipeDetails />}></Route>
       </Routes>
