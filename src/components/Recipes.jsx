@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 
 import { RecipesContext } from "../context/RecipesContext";
 
@@ -18,18 +18,12 @@ function Recipes(){
         setRecipes(recipesCopy)
     }
     function addRecipe(){
-        console.log(recipes)
         let newRecipes = recipes.concat([{
             index: "001",
             quantity: 1
         }])
         setRecipes(newRecipes)
     }
-
-    useEffect(
-        () => console.log(recipes),
-        [recipes]
-    )
 
     return (
         <>
