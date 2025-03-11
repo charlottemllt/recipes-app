@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 
 import { RecipesContext } from "../context/RecipesContext";
 
@@ -38,7 +38,7 @@ function Basket(){
     
 
     return (
-        <>
+        <div className="Basket">
             <h1>Basket</h1>
             <div>Voici votre liste de courses :</div>
             {
@@ -48,7 +48,7 @@ function Basket(){
                     return <div key={index}>{quantity} {ingObj["unité"]}{quantity > 1 ? ingObj["pluriel"] : ingObj["singulier"]}</div>
                 })
             }
-        </>
+        </div>
     )
 }
 

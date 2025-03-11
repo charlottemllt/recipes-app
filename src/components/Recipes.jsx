@@ -5,7 +5,6 @@ import { RecipesContext } from "../context/RecipesContext";
 import RECIPES from '../config/recipes.json'
 
 function Recipes(){
-    // const [numberOfRecipes, setNumberOfRecipes] = useState(1)
     const {recipes, setRecipes} = useContext(RecipesContext);
     const allRecipes = RECIPES
 
@@ -17,6 +16,7 @@ function Recipes(){
         }
         setRecipes(recipesCopy)
     }
+    
     function addRecipe(){
         let newRecipes = recipes.concat([{
             index: "001",
@@ -24,16 +24,25 @@ function Recipes(){
         }])
         setRecipes(newRecipes)
     }
+    function deleteRecipe(index){
+        let recipesCopy = [ ...recipes]
+        recipesCopy.splice(index, 1);
+        setRecipes(recipesCopy)
+    }
 
     return (
-        <>
+        <div className="Recipes">
             <h1>Recipes</h1>
-            <div>Il y a {recipes.length} recettes</div>
-
             <div className="selectList">
                 {
                     Array.from({length: recipes.length}, (x, i) => i).map( (indexSelect) => {
-                        return <select key={`select-${indexSelect}`} name="recipes" onChange={(e) => updateRecipes(e, indexSelect)}>
+                        return <div className="recipeItem" key={`recipe-${indexSelect}`}>
+                                <select
+                                    key={`select-${indexSelect}`}
+                                    name="recipes"
+                                    value={recipes[indexSelect]["index"]}
+                                    onChange={(e) => updateRecipes(e, indexSelect)}
+                                >
                                     <option value="">-- Please choose a recipe --</option>
                                     {
                                         Object.keys(allRecipes).map( (recipeID) => {
@@ -42,14 +51,14 @@ function Recipes(){
                                         })
                                     }
                                 </select>
+                                <div onClick={ () => {deleteRecipe(indexSelect)}}>Delete</div>
+                            </div>
                     })
                 }
             </div>
-            
-            {/* <div onClick={ () => {setNumberOfRecipes(numberOfRecipes - 1)}}>Delete</div> */}
 
             <button onClick={ () => addRecipe()}>Ajouter une recette</button>
-        </>
+        </div>
     )
 }
 

@@ -1,4 +1,7 @@
 import { Link, useParams } from "react-router-dom";
+import { useContext } from 'react';
+
+import { RecipesContext } from "../context/RecipesContext";
 
 import { PiOvenFill } from "react-icons/pi";
 import { TbSeeding, TbSalad } from "react-icons/tb";
@@ -27,8 +30,18 @@ const TAG_ICONS = {
 }
 
 function RecipeDetails(){
+    const {recipes, setRecipes} = useContext(RecipesContext);
     const recipeID = useParams()
     const recipe = RECIPES[recipeID["indexRecipe"]]
+
+    function addRecipe(){
+        let recipesCopy = recipes.concat([{
+            index: recipe["ID"],
+            quantity: 1
+            }]
+        )
+        setRecipes(recipesCopy)
+    }
     return (
         <div className="RecipeDetails">
             <Link className="BackBtn" to="/recipes_book">
@@ -80,9 +93,9 @@ function RecipeDetails(){
                     <div className="stepDescription">Faites chauffer une poêle légèrement huilée à feu moyen.</div>
                 </div>
             </div>
-            {/* <div className="addRecipeBtn Btn">
+            <div className="addRecipeBtn Btn" onClick={addRecipe}>
                 Ajouter à la liste
-            </div> */}
+            </div>
             <Link to="/recipes_book" className="allRecipesBtn Btn">
                 Voir toutes les recettes
             </Link>

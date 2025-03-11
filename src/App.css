@@ -159,10 +159,12 @@
         left: calc(100% - 40px);
       }
   
-      &:hover{
-        /* animation: openCard 1s ease infinite alternate; */
-        box-shadow: var(--color5) 5px 5px 10px;
-        transition: all ease 0.2s;
+      &.new{
+        &:hover{
+          /* animation: openCard 1s ease infinite alternate; */
+          box-shadow: var(--color5) 5px 5px 10px;
+          transition: all ease 0.2s;
+        }
       }
     }
   }

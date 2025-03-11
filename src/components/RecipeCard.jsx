@@ -1,33 +1,37 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";import { useContext } from 'react';
+
+import { RecipesContext } from "../context/RecipesContext";
 import { IoIosAddCircle, IoIosAdd } from "react-icons/io";
 import { FaEye } from "react-icons/fa";
 
-function addRecipe(){
-    console.log("add the recipe")
-}
-function seeRecipeDetails(){
-    console.log("see the recipe details")
-}
-function addNewRecipe(){
-    console.log("add a new recipe")
-}
-
 function RecipeCard(props){
+    const {recipes, setRecipes} = useContext(RecipesContext);
     const name = props.recipe["Name"]
+
+    function addRecipe(){
+        let recipesCopy = recipes.concat([{
+            index: props.recipe["ID"],
+            quantity: 1
+            }]
+        )
+        setRecipes(recipesCopy)
+    }
     if (name == "add-a-new-recipe"){
         return (
-            <Link to="/new_recipe" className="RecipeCard">
-                <IoIosAdd className="addNewRecipe recipeItem" onClick={addNewRecipe} />
+            <Link to="/new_recipe" className="RecipeCard new">
+                <IoIosAdd className="addNewRecipe recipeItem" />
             </Link>
         )
     }
     else{
         return (
-            <Link to={`/details/${props.recipe["ID"]}`} className="RecipeCard">
+            <div className="RecipeCard">
                 <div className="recipeItem" key={`recipe-item-${props.recipe["ID"]}`}>{name}</div>
-                <FaEye className="seeRecipeBtn" onClick={seeRecipeDetails} />
+                <Link to={`/details/${props.recipe["ID"]}`}>
+                    <FaEye className="seeRecipeBtn" />
+                </Link>
                 <IoIosAddCircle className="addRecipeBtn" onClick={addRecipe} />
-            </Link>
+            </div>
         )
     }
 }
